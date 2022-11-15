@@ -1,39 +1,39 @@
 package nu.educom.MI6;
 
-import java.util.Scanner;
-
+import javax.swing.*;
 public class Main {
-
-
     public static void main(String[] args) {
 
-
-        boolean loginCorrect = false;
-        while (!loginCorrect) {
-            try {
-                Scanner input = new Scanner(System.in);
-                System.out.println("wat is jouw gebruikers naam");
-                String userName = input.nextLine();
+        try {
+            JFrame frame = new JFrame("log in");
+            boolean valid = false;
+            while (!valid) {
+                String userName = JOptionPane.showInputDialog(frame, "wat is jouw gebruikers naam");
                 if (userName.length() <= 3) {
-                    int dienstNummer = Integer.parseInt(userName);
-                    if (dienstNummer >= 1 && dienstNummer <= 956) {
-                        System.out.println("wat is de geheime code?");
-                        String geheimeCode = input.nextLine();
-                        System.out.println(geheimeCode);
-                        if (geheimeCode.equals("For ThE Royal QUEEN")) {
-                            loginCorrect = true;
-                            System.out.println("jij ben ingelogd jouw gebruikers naam is : " + dienstNummer);
-                        } else {
-                            System.out.println("geheim code niet correct >..");
+                    try {
+                        int dienstNummer = Integer.parseInt(userName);
+                        if (dienstNummer >= 1 && dienstNummer <= 956) {
+                            valid = true;
                         }
+                    } catch (NumberFormatException ex) {
+                        System.err.println(ex.getMessage());
                     }
-                } else {
-                    System.out.println("inlog gegevens niet correct >..");
                 }
-            } catch (NumberFormatException ex) {
-                System.err.println("gegevens niet correct ");
             }
+            valid = false;
+            while (!valid) {
+                String code = JOptionPane.showInputDialog(frame, "wat is jouw code");
+                try {
+                    if (code.equals("For ThE Royal QUEEN")) {
+                        valid = true;
+                    }
+                } catch (NumberFormatException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }
+            System.exit(0);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-
     }
 }

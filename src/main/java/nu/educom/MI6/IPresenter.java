@@ -5,5 +5,6 @@ public interface IPresenter {
 
     void triggerPassword(String psw);
      String showErr();
+    public boolean saveAttempt(String diensnummer, boolean succesvol);
     void exit();
 }

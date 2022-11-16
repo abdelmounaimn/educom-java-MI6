@@ -7,7 +7,7 @@ public class Main {
         Presenter presenter= new Presenter(view);
         presenter.run();
 
-        /*
+ /*
         try {
             JFrame frame = new JFrame("log in");
             boolean valid = false;

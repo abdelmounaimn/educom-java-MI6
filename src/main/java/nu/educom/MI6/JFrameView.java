@@ -109,6 +109,12 @@ public class JFrameView implements IView, ActionListener {
         this.errLb.setText(this.presenter.showErr());
         if(this.presenter.showErr().equals("")){
             this.area.append("\n"+this.loginTf.getText());
+            this.presenter.saveAttempt(this.loginTf.getText(),true);
+            this.loginTf.setText("");
+            this.pswTf.setText("");
+
+        }else {
+            this.presenter.saveAttempt(this.loginTf.getText(),false);
         }
     }
 }

@@ -1,33 +1,48 @@
 package nu.educom.MI6;
 
+import nu.educom.MI6.models.Agent;
+
 public class Presenter implements IPresenter {
     private IView view;
-    private User user;
+    private Agent agent;
+    private String err = "*";
+    private Database db;
 
     public Presenter(IView view) {
-        this.user = new User();
+        this.db = new Database();
+
+        this.agent = new Agent();
         this.view = view;
         this.view.installPresentor(this);
     }
 
     @Override
     public void triggerLogin(String login) {
-        if (user.userNamevalidation(login)) {
-            user.setLogin(login);
-            user.setEr("");
+        Agent a = db.findAgent(login);
+        if (a != null) {
+            this.agent = a;
+
         } else {
-            user.setEr(" inlog gegevens zijn niet correct! ");
+            this.err = "ACCESS DENIED";
         }
     }
 
     @Override
     public void triggerPassword(String psw) {
-        if (user.passwordvalidation(psw)) {
-            user.setLogin(psw);
-        } else {
-            user.setEr(" inlog gegevens zijn niet correct! ");
-        }
+        if (this.agent != null) {
+            if (this.agent.getCode().equals(psw)) {
+                this.err = "";
+            }else {
+                this.err = "ACCESS DENIED";
 
+            }
+        } else this.err = "ACCESS DENIED";
+
+    }
+
+    public boolean saveAttempt(String diensnummer, boolean succesvol) {
+        this.db.saveAttempt(diensnummer, succesvol);
+        return true;
     }
 
     @Override
@@ -40,14 +55,14 @@ public class Presenter implements IPresenter {
     }
 
     public String showErr() {
-        return this.user.getEr();
+        return this.err;
     }
 
-    public User getUser() {
-        return user;
+    public Agent getAgent() {
+        return agent;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAgent(Agent agent) {
+        this.agent = agent;
     }
 }

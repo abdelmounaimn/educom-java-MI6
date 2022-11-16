@@ -1,9 +1,13 @@
 package nu.educom.MI6;
-
 import javax.swing.*;
 public class Main {
     public static void main(String[] args) {
 
+        IView view = new JFrameView();
+        Presentor presentor= new Presentor(view);
+        presentor.run();
+
+        /*
         try {
             JFrame frame = new JFrame("log in");
             boolean valid = false;
@@ -34,6 +38,6 @@ public class Main {
             System.exit(0);
         } catch (Exception e) {
             System.err.println(e.getMessage());
-        }
+        }*/
     }
 }

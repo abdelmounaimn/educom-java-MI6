@@ -1,11 +1,11 @@
 package nu.educom.MI6;
-import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
 
         IView view = new JFrameView();
-        Presentor presentor= new Presentor(view);
-        presentor.run();
+        Presenter presenter= new Presenter(view);
+        presenter.run();
 
         /*
         try {

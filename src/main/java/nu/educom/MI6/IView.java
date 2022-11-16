@@ -8,6 +8,6 @@ public interface IView {
 
     void show();
 
-    void installPresentor(IPresentor presentor);
+    void installPresentor(IPresenter presentor);
 
 }

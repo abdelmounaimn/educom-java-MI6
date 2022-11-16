@@ -3,12 +3,12 @@ package nu.educom.MI6;
 public class User {
     private String login;
     private String password;
-    private String er;
+    private String er="Errors : ";
+    private boolean valid = false;
 
     public User(String login, String password, String er) {
         this.login = login;
         this.password = password;
-        this.er = er;
     }
 
     public User() {
@@ -38,6 +38,40 @@ public class User {
         this.er = er;
     }
 
+    public boolean userNamevalidation(String login) {
+        boolean valid = false;
 
+        if (login.length() <= 3) {
+            try {
+                int dienstNummer = Integer.parseInt(login);
+                if (dienstNummer >= 1 && dienstNummer <= 956 ) {
+                    valid = true;
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+            }
+        }
+        return valid;
+    }
+    public boolean passwordvalidation( String psw) {
+        boolean valid = false;
 
+            try {
+                if (psw.equals("For ThE Royal QUEEN") ) {
+                    valid = true;
+                }
+            } catch (NumberFormatException ex) {
+                System.err.println(ex.getMessage());
+            }
+        return valid;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", er='" + er + '\'' +
+                '}';
+    }
 }

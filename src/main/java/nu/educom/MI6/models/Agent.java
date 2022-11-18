@@ -49,15 +49,6 @@ public class Agent {
         this.eindLicence = eindLicence;
     }
 
-    public Agent(int id, String dienstnummer, String code, boolean actief, boolean licenceToKill, Date eindLicence) {
-        this.id =id;
-        this.dienstnummer = dienstnummer;
-        this.code = code;
-        this.actief = actief;
-        this.licenceToKill = licenceToKill;
-        this.eindLicence = eindLicence;
-    }
-
     public int getId() {
         return id;
     }

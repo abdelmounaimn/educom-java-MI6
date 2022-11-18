@@ -1,17 +1,13 @@
 package nu.educom.MI6;
 
-import nu.educom.MI6.models.Agent;
-
-
 public class Presenter implements IPresenter {
     private IView view;
-    private Agent agent;
+
     private String msg = "*";
     private Database db;
 
     public Presenter(IView view) {
         this.db = new Database();
-        this.agent = new Agent();
         this.view = view;
         this.view.installPresentor(this);
     }
@@ -65,7 +61,6 @@ public class Presenter implements IPresenter {
 
     @Override
     public void exit() {
-
     }
 
     public void run() {

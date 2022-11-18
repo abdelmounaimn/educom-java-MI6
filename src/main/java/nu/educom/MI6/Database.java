@@ -22,7 +22,7 @@ public class Database {
         }
     }
 
-    public boolean saveAttempt(String dienstnummer, boolean succesvol) {
+    public void saveAttempt(String dienstnummer, boolean succesvol) {
         //LoginAttempt at = new LoginAttempt();
         try {
             this.connection();
@@ -45,7 +45,6 @@ public class Database {
                 System.out.println(ex.getMessage());
             }
         }
-        return true;
     }
 
     public Agent findAgent(String dienstnummer) {
@@ -57,17 +56,14 @@ public class Database {
             ResultSet resultSet;
             resultSet = statement.executeQuery("select * from agents where dienstnummer =" + dienstnummer);
 
-            int code;
-            String title;
-            boolean hasNext = false;
+
             while (resultSet.next()) {
                 a = new Agent();
-                hasNext = true;
                 a.setId(resultSet.getInt("id"));
                 a.setDienstnummer(resultSet.getString("dienstnummer"));
                 a.setCode(resultSet.getString("code"));
-                a.setActief(resultSet.getInt("actief") == 0 ? false : true);
-                a.setLicenceToKill(resultSet.getInt("licence_to_kill") == 0 ? false : true);
+                a.setActief(resultSet.getInt("actief") != 0 );
+                a.setLicenceToKill(resultSet.getInt("licence_to_kill") == 1);
                 a.setEindLicence(resultSet.getDate("eind_licence"));
             }
             resultSet.close();

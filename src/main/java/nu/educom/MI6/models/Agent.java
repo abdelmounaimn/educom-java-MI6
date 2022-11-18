@@ -4,20 +4,20 @@ import java.util.Date;
 
 public class Agent {
     private int id;
-    private String diensnummer;
+    private String dienstnummer;
     private String code;
     private boolean actief;
-    private boolean licentToKill;
+    private boolean licenceToKill;
     private Date eindLicence;
 
     @Override
     public String toString() {
         return "Agent{" +
                 "id=" + id +
-                ", diensnummer='" + diensnummer + '\'' +
+                ", dienstnummer='" + dienstnummer + '\'' +
                 ", code='" + code + '\'' +
                 ", actief=" + actief +
-                ", licentToKill=" + licentToKill +
+                ", licenceToKill=" + licenceToKill +
                 ", eindLicence=" + eindLicence +
                 '}';
     }
@@ -29,8 +29,8 @@ public class Agent {
         this.id = id;
     }
 
-    public void setDiensnummer(String diensnummer) {
-        this.diensnummer = diensnummer;
+    public void setDienstnummer(String dienstnummer) {
+        this.dienstnummer = dienstnummer;
     }
 
     public void setCode(String code) {
@@ -41,20 +41,20 @@ public class Agent {
         this.actief = actief;
     }
 
-    public void setLicentToKill(boolean licentToKill) {
-        this.licentToKill = licentToKill;
+    public void setLicenceToKill(boolean licenceToKill) {
+        this.licenceToKill = licenceToKill;
     }
 
     public void setEindLicence(Date eindLicence) {
         this.eindLicence = eindLicence;
     }
 
-    public Agent(int id, String diensnummer, String code, boolean actief, boolean licentToKill, Date eindLicence) {
+    public Agent(int id, String dienstnummer, String code, boolean actief, boolean licenceToKill, Date eindLicence) {
         this.id =id;
-        this.diensnummer = diensnummer;
+        this.dienstnummer = dienstnummer;
         this.code = code;
         this.actief = actief;
-        this.licentToKill = licentToKill;
+        this.licenceToKill = licenceToKill;
         this.eindLicence = eindLicence;
     }
 
@@ -62,8 +62,8 @@ public class Agent {
         return id;
     }
 
-    public String getDiensnummer() {
-        return diensnummer;
+    public String getDienstnummer() {
+        return dienstnummer;
     }
 
     public String getCode() {
@@ -74,8 +74,8 @@ public class Agent {
         return actief;
     }
 
-    public boolean isLicentToKill() {
-        return licentToKill;
+    public boolean isLicenceToKill() {
+        return licenceToKill;
     }
 
     public Date getEindLicence() {
